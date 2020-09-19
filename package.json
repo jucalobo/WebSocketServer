@@ -1,0 +1,47 @@
+{
+  "name": "unvtechboss",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "clean": "rm -rf dist/",
+    "create_dist": "mkdir dist && mkdir dist/config && cp config/* dist/config/",
+    "create_add":"mkdir dist/Historico && mkdir dist/file",
+    "build": "npm run clean && npm run create_dist && babel src -d dist",
+    "dev": "nodemon --exec babel-node src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "babel-version": "babel --version"
+  },
+  "keywords": [],
+  "author": "TechBoss - Alberto Lozada",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/cli": "^7.10.4",
+    "@babel/core": "^7.10.4",
+    "@babel/preset-env": "^7.10.4",
+    "babel-loader": "^8.1.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "nodemon": "^2.0.4",
+    "regenerator-runtime": "^0.13.5"
+  },
+  "dependencies": {
+    "@babel/node": "^7.10.4",
+    "@babel/plugin-transform-runtime": "^7.10.4",
+    "@babel/polyfill": "^7.10.4",
+    "axios": "^0.19.2",
+    "body-parser": "^1.19.0",
+    "config": "^3.3.1",
+    "core-js": "^3.6.5",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "moment": "^2.26.0",
+    "mysql2": "^2.1.0",
+    "ws": "^7.3.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "babel"
+  },
+  "description": ""
+}

@@ -1,0 +1,26 @@
+CREATE DEFINER = CURRENT_USER TRIGGER `UNVTechBoss`.`InfoRecibidos_AFTER_INSERT` AFTER INSERT ON `InfoRecibidos` FOR EACH ROW
+BEGIN
+	UPDATE Zonas
+	SET
+	Aforo = IF( (SELECT isEntrada FROM DeviceCode WHERE idDeviceCode = NEW.idDeviceCode) = 1, Aforo + 1, Aforo -1 )
+	WHERE idZonas =  (SELECT idZonas FROM DeviceCode WHERE idDeviceCode = NEW.idDeviceCode);
+END
+
+
+CREATE DEFINER = CURRENT_USER TRIGGER `UNVTechBoss`.`Zonas_AFTER_UPDATE` AFTER UPDATE ON `Zonas` FOR EACH ROW
+BEGIN
+  INSERT INTO HistoricoAforo ( idZonas, Aforo) VALUES ( NEW.idZonas, NEW.Aforo );
+END
+
+CREATE TABLE `UNVTechBoss`.`PicoCedula` (
+  `idPicoCedula` INT NOT NULL,
+  `Digitos` VARCHAR(45) NULL,
+  PRIMARY KEY (`idPicoCedula`));
+
+INSERT INTO `UNVTechBoss`.`SubItemMenu` (`SubItem`, `Icon`, `SubTo`, `Estado`, `idMenuModulo`) VALUES ('Pico Cedula', 'fa-id-card', '/inicio/Configuración/picocedula', '1', '1');
+INSERT INTO `UNVTechBoss`.`Tablas` (`idTablas`, `nombre_tabla`) VALUES ('10', 'PicoCedula');
+INSERT INTO `UNVTechBoss`.`HeadersTablas` (`idHeadersTablas`, `idTablas`, `NombreCampo`, `Label`, `Tamano`, `idTiposCampos`, `Filtro`, `Orden`, `Visible`) VALUES ('54', '10', 'idPicoCedula', 'Día', '75', '1', '1', '1', '1');
+INSERT INTO `UNVTechBoss`.`HeadersTablas` (`idHeadersTablas`, `idTablas`, `NombreCampo`, `Label`, `Tamano`, `idTiposCampos`, `Filtro`, `Orden`, `Visible`) VALUES ('55', '10', 'Digitos', 'Pico y Cedula', '120', '1', '1', '2', '1');
+INSERT INTO `UNVTechBoss`.`AcctionTablas` (`idTablas`, `NombreBtn`, `idTiposBotones`, `Orden`, `Mensaje`) VALUES ('10', 'Editar', '4', '1', 'Editar Pico Cedula');
+INSERT INTO `UNVTechBoss`.`FormulariosTablas` (`idTablas`, `NombreCampo`, `Label`, `idTiposCampos`, `Tamano`, `Obligatorio`, `Orden`, `Editable`) VALUES ('10', 'idPicoCedula', 'Día', '1', '3', '1', '1', '0');
+INSERT INTO `UNVTechBoss`.`FormulariosTablas` (`idTablas`, `NombreCampo`, `Label`, `idTiposCampos`, `Tamano`, `Obligatorio`, `Orden`, `Editable`) VALUES ('10', 'Digitos', 'Ingresos P = Par, I = Impar / Digitos separados por coma  ', '1', '9', '1', '2', '1');
