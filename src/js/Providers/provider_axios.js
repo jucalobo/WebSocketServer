@@ -7,21 +7,33 @@ const config = require('config');
 
 
 const post  = ( $Body ) => {
-  const url_path = `http://${config.get("HOST")}/UNV_SLIM_TechBoss/public/registro_residente`;
-  // console.log('post body',url_path);
+  const url_path = `http://${config.get("HOST")}/${config.get("SLIM")}`;
+  // console.log('url_path',url_path);
+  // console.log('post body',$Body);
   return rAxios.post(url_path, $Body);
 
 }
 
 const registroResidente = async ($Body) => {
-  $Body.Residente = true;
+  $Body.Residente = 'true';
   const rsp = await post($Body);
+  // sede responde siempre 200 para ver
+  // console.log ('respuesta Axios',rsp); 
+  return;
+
+}
+
+const registroDesconocido = async ($Body) => {
+  $Body.Residente = 'false';
+  const rsp = await post($Body);
+  // sede responde siempre 200 para ver
   // console.log ('respuesta Axios',rsp);
   return;
 
 }
 
 export {
-  registroResidente
+  registroResidente,
+  registroDesconocido
 }
 

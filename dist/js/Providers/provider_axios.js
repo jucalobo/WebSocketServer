@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.registroResidente = void 0;
+exports.registroDesconocido = exports.registroResidente = void 0;
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 
@@ -17,7 +17,8 @@ var config = require('config'); // origen hace referencia a la IP a la cual toca
 
 
 var post = function post($Body) {
-  var url_path = "http://".concat(config.get("HOST"), "/UNV_SLIM_TechBoss/public/registro_residente"); // console.log('post body',url_path);
+  var url_path = "http://".concat(config.get("HOST"), "/").concat(config.get("SLIM")); // console.log('url_path',url_path);
+  // console.log('post body',$Body);
 
   return rAxios.post(url_path, $Body);
 };
@@ -29,7 +30,7 @@ var registroResidente = /*#__PURE__*/function () {
       while (1) {
         switch (_context.prev = _context.next) {
           case 0:
-            $Body.Residente = true;
+            $Body.Residente = 'true';
             _context.next = 3;
             return post($Body);
 
@@ -51,3 +52,33 @@ var registroResidente = /*#__PURE__*/function () {
 }();
 
 exports.registroResidente = registroResidente;
+
+var registroDesconocido = /*#__PURE__*/function () {
+  var _ref2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2($Body) {
+    var rsp;
+    return regeneratorRuntime.wrap(function _callee2$(_context2) {
+      while (1) {
+        switch (_context2.prev = _context2.next) {
+          case 0:
+            $Body.Residente = 'false';
+            _context2.next = 3;
+            return post($Body);
+
+          case 3:
+            rsp = _context2.sent;
+            return _context2.abrupt("return");
+
+          case 5:
+          case "end":
+            return _context2.stop();
+        }
+      }
+    }, _callee2);
+  }));
+
+  return function registroDesconocido(_x2) {
+    return _ref2.apply(this, arguments);
+  };
+}();
+
+exports.registroDesconocido = registroDesconocido;

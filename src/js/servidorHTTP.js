@@ -172,6 +172,7 @@ const BD_Save_Person = async ( body ) => {
             wss.send('Actualizar_Monitoreo');
         }else{
             console.log("Desconocido");
+            await axios.registroDesconocido(dataInfo);
             wss.send(`Registrar_Recibidos, ${dataInfo.idDeviceCode}, ${dataInfo.ID_Seq}`);
         }
 

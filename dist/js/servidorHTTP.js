@@ -87,7 +87,7 @@ var respuestaHTTP = function respuestaHTTP(res) {
   res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
   res.setHeader('Access-Control-Allow-Credentials', true);
   res.setHeader('Content-Type', 'text/plain');
-  res.end('Servidor pruebas TechBoss');
+  res.end('Servidor pruebas TechBoss V1.4');
 };
 
 var fileLog = function fileLog(req) {
@@ -197,7 +197,7 @@ var BD_Save_Person = /*#__PURE__*/function () {
             validar = _context2.sent;
 
             if (!validar) {
-              _context2.next = 31;
+              _context2.next = 33;
               break;
             }
 
@@ -225,18 +225,22 @@ var BD_Save_Person = /*#__PURE__*/function () {
 
           case 25:
             wss.send('Actualizar_Monitoreo');
-            _context2.next = 30;
+            _context2.next = 32;
             break;
 
           case 28:
             console.log("Desconocido");
+            _context2.next = 31;
+            return axios.registroDesconocido(dataInfo);
+
+          case 31:
             wss.send("Registrar_Recibidos, ".concat(dataInfo.idDeviceCode, ", ").concat(dataInfo.ID_Seq));
 
-          case 30:
+          case 32:
             // imgSave( json_Body.FaceInfoList[0].PanoImage.Name, json_Body.FaceInfoList[0].PanoImage.Data );
             (0, _filemanager.imgSave)(fileName, fileData);
 
-          case 31:
+          case 33:
           case "end":
             return _context2.stop();
         }

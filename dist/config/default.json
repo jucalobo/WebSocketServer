@@ -3,11 +3,12 @@
       "DB_HOST_NAME" : "db-desarrollo.chew5l8efn2g.us-west-2.rds.amazonaws.com",
       "DB_USER" : "root",
       "DB_PSWD" : "ST15628123" ,
-      "DB_DATABASE" : "UNVTechBoss"
+      "DB_DATABASE" : "UNVServer"
     },
 
   "FS_PATH" : "./Historico/",
   "IMG_PATH" : "./file/img/",
   "HOST":"192.168.2.10",
+  "SLIM":"UNV_SLIM_Server/public/registro_residente",
   "WS":"ws://192.168.2.10:3000"
 }
