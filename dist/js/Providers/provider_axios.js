@@ -17,7 +17,7 @@ var config = require('config'); // origen hace referencia a la IP a la cual toca
 
 
 var post = function post($Body) {
-  var url_path = "http://".concat(config.get("HOST"), "/").concat(config.get("SLIM")); // console.log('url_path',url_path);
+  var url_path = "".concat(config.get("SLIM")); // console.log('url_path',url_path);
   // console.log('post body',$Body);
 
   return rAxios.post(url_path, $Body);

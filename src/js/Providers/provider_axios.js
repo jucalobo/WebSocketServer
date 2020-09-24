@@ -7,7 +7,7 @@ const config = require('config');
 
 
 const post  = ( $Body ) => {
-  const url_path = `http://${config.get("HOST")}/${config.get("SLIM")}`;
+  const url_path = `${config.get("SLIM")}`;
   // console.log('url_path',url_path);
   // console.log('post body',$Body);
   return rAxios.post(url_path, $Body);
