@@ -4,8 +4,8 @@
   "main": "index.js",
   "scripts": {
     "clean": "rm -rf dist/",
-    "create_dist": "mkdir dist && mkdir dist/config && cp config/* dist/config/",
-    "create_add": "mkdir dist/Historico && mkdir dist/file && cp package.json dist/",
+    "create_dist": "mkdir dist ",
+    "create_add": "cp package.json dist/",
     "build": "npm run clean && npm run create_dist && npm run create_add && babel src -d dist",
     "dev": "nodemon --exec babel-node src/index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
