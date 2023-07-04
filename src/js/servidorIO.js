@@ -1,6 +1,6 @@
 const WebSocket = require('ws');
 
-const wss = new WebSocket.Server({ port: 8081 });
+const wss = new WebSocket.Server({ port: 90 });
 
 wss.on('open', () => {
   console.log('Puerto socket abierto');
