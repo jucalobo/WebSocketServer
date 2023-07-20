@@ -37,7 +37,7 @@ export const servidorIO = () =>{
       aConexiones.forEach( cliente => {
         if(cliente.url === URL){
           if ( cliente.ws !== ws && cliente.ws.readyState === WebSocket.OPEN) {
-            cliente.ws.send(data);
+            cliente.ws.send(data.toString());
           }
         }
       });
